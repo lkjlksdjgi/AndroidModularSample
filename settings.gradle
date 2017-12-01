@@ -1,1 +1,1 @@
-include ':app', ':Module_Girls', ':Module_Android', ':Module_IOS', ':Module_Main'
+include ':app', ':Module_Girls', ':Module_Android', ':Module_IOS', ':Module_Main', ':Module_Common'

@@ -21,3 +21,15 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext{
+    compileSdkVersion  = 26
+    buildToolsVersion  = "26.0.1"
+    minSdkVersion =  15
+    targetSdkVersion = 26
+    versionCode  = 1
+    versionName  = "1.0.0"
+
+    //阿里巴巴 Aroute 的注解版本号，每个模块都用到了，方便统一修改版本号
+    annotationProcessor = "1.1.4"
+}
