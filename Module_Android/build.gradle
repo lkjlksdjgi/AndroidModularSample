@@ -12,10 +12,10 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
-        if(isModule.toBoolean()){
-            //这里可以直接删除，默认是清单文件里的包名。也可以在这指定包名
-            applicationId "com.siw.module.moduleandroid"
-        }
+//        if(isModule.toBoolean()){
+//            //这里可以直接删除，默认是清单文件里的包名。也可以在这指定包名
+//            applicationId "com.siw.module.moduleandroid"
+//        }
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //ARouter
         javaCompileOptions {

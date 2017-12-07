@@ -30,6 +30,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.main_activity_main);
         initFragments();
         initView();
+        changeTab(0);
         changeFragment(0);
     }
 
