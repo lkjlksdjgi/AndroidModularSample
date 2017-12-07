@@ -12,12 +12,13 @@ import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.siw.module.modulecommon.base.BaseActivity;
 import com.siw.module.modulecommon.base.BaseFragment;
 
 import java.util.ArrayList;
 
 @Route(path = "/Main/MainActivity")
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ArrayList<BaseFragment> fragments;
     private LinearLayout main_fragment_tab;
@@ -82,9 +83,6 @@ public class MainActivity extends AppCompatActivity {
     }
     private void changeFragment(int index) {
         BaseFragment fragment = fragments.get(index);
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_fragment_container,fragment)
-                .commit();
+        replaceFragment(fragment,R.id.main_fragment_container);
     }
 }
