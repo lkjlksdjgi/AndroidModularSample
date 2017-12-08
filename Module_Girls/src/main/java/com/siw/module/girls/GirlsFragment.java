@@ -45,7 +45,7 @@ public class GirlsFragment extends BaseFragment {
     }
 
     private void initData() {
-        HttpUtils.obtain().getAsync("http://gank.io/api/data/福利/10/1", new JsonCallback<GirlsBean>() {
+        HttpUtils.obtain().getAsync("http://gank.io/api/data/福利/10/1/", new JsonCallback<GirlsBean>() {
             @Override
             public void onHttpCallbackSuccess(GirlsBean girlsBean) {
                 results = girlsBean.getResults();
