@@ -3,7 +3,7 @@
     package="com.siw.module.moduleios">
 
     <application>
-        <activity android:name=".MainActivity">
+        <activity android:name="module.MainActivity">
         </activity>
     </application>
 

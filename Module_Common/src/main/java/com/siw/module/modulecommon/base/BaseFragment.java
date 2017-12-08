@@ -10,11 +10,12 @@ import android.support.v4.app.Fragment;
 
 public class BaseFragment extends Fragment {
     protected BaseActivity baseActivity;
-
+    protected Context context;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.baseActivity = (BaseActivity) context;
+        this.context = context.getApplicationContext();
     }
 
     /**

@@ -3,7 +3,7 @@
     package="com.siw.module.girls">
 
     <application>
-        <activity android:name=".MainActivity">
+        <activity android:name="module.MainActivity">
         </activity>
     </application>
 

@@ -24,7 +24,7 @@ public class IOSFragments extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = View.inflate(getActivity(), R.layout.ios_activity_main, null);
+        view = View.inflate(getActivity(), R.layout.ios_fragment, null);
         return view;
     }
 }
