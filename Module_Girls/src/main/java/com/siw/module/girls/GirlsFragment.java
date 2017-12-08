@@ -13,6 +13,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.siw.module.modulecommon.base.BaseFragment;
+import com.siw.module.modulecommon.http.HttpUtils;
+import com.siw.module.modulecommon.http.JsonCallback;
 
 import java.util.List;
 
@@ -43,9 +45,19 @@ public class GirlsFragment extends BaseFragment {
     }
 
     private void initData() {
-        Gson gson = new Gson();
-        GirlsBean girlsBean = gson.fromJson(data, GirlsBean.class);
-        results = girlsBean.getResults();
+        HttpUtils.obtain().getAsync("http://gank.io/api/data/福利/10/1", new JsonCallback<GirlsBean>() {
+            @Override
+            public void onHttpCallbackSuccess(GirlsBean girlsBean) {
+                results = girlsBean.getResults();
+                if(myAdapter != null){
+                    myAdapter.notifyDataSetChanged();
+                }
+            }
+            @Override
+            public void onError(String error) {
+
+            }
+        });
     }
 
     private void initView() {
@@ -77,6 +89,9 @@ public class GirlsFragment extends BaseFragment {
 
         @Override
         public int getItemCount() {
+            if(results == null){
+                return 0;
+            }
             return results.size();
         }
 
