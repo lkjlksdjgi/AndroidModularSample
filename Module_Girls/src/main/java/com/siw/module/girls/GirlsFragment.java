@@ -11,8 +11,9 @@ import android.widget.ImageView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
+import com.siw.module.girls.modle.GirlsBean;
 import com.siw.module.modulecommon.base.BaseFragment;
+import com.siw.module.modulecommon.base.BaseView;
 import com.siw.module.modulecommon.http.HttpUtils;
 import com.siw.module.modulecommon.http.JsonCallback;
 
@@ -20,10 +21,9 @@ import java.util.List;
 
 /**
  * Created by 童思伟 on 2017/12/7.
- *
  */
 @Route(path = "/girls/girlsFragment")
-public class GirlsFragment extends BaseFragment {
+public class GirlsFragment extends BaseFragment implements BaseView<GirlsBean> {
 
     private RecyclerView recycler_view;
     private LinearLayoutManager mLayoutManager;
@@ -45,19 +45,8 @@ public class GirlsFragment extends BaseFragment {
     }
 
     private void initData() {
-        HttpUtils.obtain().getAsync("http://gank.io/api/data/福利/10/1/", new JsonCallback<GirlsBean>() {
-            @Override
-            public void onHttpCallbackSuccess(GirlsBean girlsBean) {
-                results = girlsBean.getResults();
-                if(myAdapter != null){
-                    myAdapter.notifyDataSetChanged();
-                }
-            }
-            @Override
-            public void onError(String error) {
-
-            }
-        });
+        GrilsPresenter grilsPresenter = new GrilsPresenter(this);
+        grilsPresenter.getData();
     }
 
     private void initView() {
@@ -69,6 +58,14 @@ public class GirlsFragment extends BaseFragment {
         // 设置布局管理器
         recycler_view.setLayoutManager(mLayoutManager);
         recycler_view.setAdapter(myAdapter);
+    }
+
+    @Override
+    public void getData(GirlsBean girlsBean) {
+        results = girlsBean.getResults();
+        if (myAdapter != null) {
+            myAdapter.notifyDataSetChanged();
+        }
     }
 
     public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
@@ -89,7 +86,7 @@ public class GirlsFragment extends BaseFragment {
 
         @Override
         public int getItemCount() {
-            if(results == null){
+            if (results == null) {
                 return 0;
             }
             return results.size();
